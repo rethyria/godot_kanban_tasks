@@ -82,4 +82,3 @@ func __bind_varargs(callable: Callable, args: Array) -> Callable:
 		if args[i] != __undefined:
 			callable = callable.bind(args[i])
 	return callable
-

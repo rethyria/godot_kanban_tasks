@@ -760,4 +760,3 @@ func __update_visibility() -> void:
 
 	# Hide main window buttons if only one main window is added.
 	main_editor_button_hb.visible = len(main_editor_buttons) > 1
-

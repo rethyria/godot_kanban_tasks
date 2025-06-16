@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bjnuysrucdvt2"]
 
-[ext_resource type="Script" path="res://ui/ui.gd" id="1_ugy0f"]
+[ext_resource type="Script" uid="uid://dsma6jaxj1hhi" path="res://ui/ui.gd" id="1_ugy0f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fgojj"]
 
@@ -167,6 +167,7 @@ layout_mode = 2
 editor_description = "Modulated to not be visible. Is needed to keep the bar in the same height as the other tab bars."
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+current_tab = 0
 tab_count = 1
 tab_0/title = "Main"
 
