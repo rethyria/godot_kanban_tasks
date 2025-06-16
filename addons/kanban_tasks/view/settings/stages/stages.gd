@@ -19,6 +19,7 @@ var stylebox_hp: StyleBoxFlat
 @onready var confirm_not_empty: ConfirmationDialog = %ConfirmNotEmpty
 @onready var confirm_empty: ConfirmationDialog = %ConfirmEmpty
 @onready var task_destination: OptionButton = %TaskDestination
+@onready var panel_container: PanelContainer = %PanelContainer
 
 
 func _ready() -> void:
@@ -61,6 +62,8 @@ func _notification(what) -> void:
 				column_add.add_theme_stylebox_override(&"pressed", stylebox_hp)
 			if is_instance_valid(warning_sign):
 				warning_sign.icon = get_theme_icon(&"NodeWarning", &"EditorIcons")
+			if is_instance_valid(panel_container):
+				panel_container.add_theme_stylebox_override(&"panel", get_theme_stylebox(&"panel", &"Tree"))
 
 
 func update() -> void:

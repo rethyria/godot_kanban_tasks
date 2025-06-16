@@ -27,6 +27,7 @@ var file_dialog_option_button_group: ButtonGroup
 @onready var data_file_path: LineEdit = %DataFilePath
 @onready var data_file_path_button: Button = %DataFilePathButton
 @onready var file_dialog: FileDialog = %FileDialog
+@onready var panel_container: PanelContainer = %PanelContainer
 
 
 func _ready() -> void:
@@ -67,6 +68,15 @@ func _ready() -> void:
 	file_dialog_open_option.button_pressed = true
 
 	file_dialog.file_selected.connect(__update_editor_data_file)
+	
+	notification(NOTIFICATION_THEME_CHANGED)
+
+
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_THEME_CHANGED:
+			if is_instance_valid(panel_container):
+				panel_container.add_theme_stylebox_override(&"panel", get_theme_stylebox(&"panel", &"Tree"))
 
 
 func update() -> void:

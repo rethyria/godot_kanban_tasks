@@ -14,6 +14,7 @@ var randomizer := RandomNumberGenerator.new()
 @onready var category_holder: VBoxContainer = %CategoryHolder
 @onready var scroll_container: ScrollContainer = %ScrollContainer
 @onready var add_category_button: Button = %Add
+@onready var panel_container: PanelContainer = %PanelContainer
 
 
 func _ready() -> void:
@@ -27,6 +28,8 @@ func _notification(what: int) -> void:
 		NOTIFICATION_THEME_CHANGED:
 			if is_instance_valid(add_category_button):
 				add_category_button.icon = get_theme_icon(&"Add", &"EditorIcons")
+			if is_instance_valid(panel_container):
+				panel_container.add_theme_stylebox_override(&"panel", get_theme_stylebox(&"panel", &"Tree"))
 
 
 func update() -> void:

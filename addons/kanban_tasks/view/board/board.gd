@@ -91,6 +91,8 @@ func _notification(what):
 				button_show_descriptions.icon = get_theme_icon(&"Script", &"EditorIcons")
 			if is_instance_valid(button_show_steps):
 				button_show_steps.icon = get_theme_icon(&"FileList", &"EditorIcons")
+			if is_instance_valid(settings):
+				settings.on_theme_changed()
 
 
 func update() -> void:

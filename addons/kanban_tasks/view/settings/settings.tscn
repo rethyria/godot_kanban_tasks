@@ -13,6 +13,7 @@ theme_type_variation = &"EditorSettingsDialog"
 script = ExtResource("1_4eaw3")
 
 [node name="Settings" type="TabContainer" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 300)
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,17 +24,21 @@ offset_right = -8.0
 offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 2
+current_tab = 0
 
 [node name="General" parent="Settings" instance=ExtResource("1_dk7pg")]
 unique_name_in_owner = true
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="Categories" parent="Settings" instance=ExtResource("3_iycb0")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Stages" parent="Settings" instance=ExtResource("4_okolg")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+metadata/_tab_index = 2
