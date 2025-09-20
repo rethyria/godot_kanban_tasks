@@ -139,6 +139,7 @@ func _notification(what: int) -> void:
 				edit_button.icon = get_theme_icon(&"Edit", &"EditorIcons")
 		NOTIFICATION_DRAW:
 			if has_focus():
+				await get_tree().create_timer(0.0).timeout
 				__style_focus.draw(
 					get_canvas_item(),
 					Rect2(
