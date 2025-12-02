@@ -27,13 +27,27 @@ var steps: Array[__Step]:
 	set(value):
 		steps = value
 		__notify_changed()
+		
+var dependencies: Array[String]:
+	get:
+		return dependencies.duplicate()
+	set(value):
+		dependencies = value
+		__notify_changed()
+
+var url: String:
+	set(value):
+		url = value
+		__notify_changed()
 
 
-func _init(p_title: String = "", p_description: String = "", p_category: String = "", p_steps: Array[__Step] = []) -> void:
+func _init(p_title: String = "", p_description: String = "", p_category: String = "", p_steps: Array[__Step] = [], p_dependencies: Array[String] = [], p_url: String = "") -> void:
 	title = p_title
 	description = p_description
 	category = p_category
 	steps = p_steps
+	dependencies = p_dependencies
+	url = p_url
 	super._init()
 
 
@@ -56,6 +70,8 @@ func to_json() -> Dictionary:
 		"description": description,
 		"category": category,
 		"steps": s,
+		"dependencies": dependencies,
+		"url": url
 	}
 
 
@@ -84,3 +100,16 @@ func from_json(json: Dictionary) -> void:
 		steps = s
 	else:
 		push_warning("Loading incomplete json data which is missing steps.")
+		
+	if json.has("dependencies"):
+		var d: Array[String] = []
+		for dependency in json["dependencies"]:
+			d.append(dependency)
+		dependencies = d
+	else:
+		push_warning("Loading incomplete json data which is missing dependencies.")
+
+	if json.has("url"):
+		url = json["url"]
+	else:
+		push_warning("Loading incomplete json data which is missing a url.")

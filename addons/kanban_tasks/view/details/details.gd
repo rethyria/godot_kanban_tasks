@@ -22,15 +22,20 @@ var __step_data: __StepData
 @onready var step_details: VBoxContainer = %StepDetails
 @onready var close_step_details_button: Button = %CloseStepDetails
 @onready var step_edit: TextEdit = %StepEdit
+@onready var dependency_options: OptionButton = %DependencyOptions
 
 
 func _ready() -> void:
+	visible = false
+	
 	about_to_popup.connect(__on_about_to_popup)
 	create_step_edit.text_submitted.connect(__create_step)
 	close_step_details_button.pressed.connect(__close_step_details)
 	notification(NOTIFICATION_THEME_CHANGED)
 	step_holder.entry_action_triggered.connect(__on_step_action_triggered)
 	step_holder.entry_move_requesed.connect(__step_move_requesed)
+	
+	dependency_options.focus_entered.connect(__populate_dependency_items)
 
 	visibility_changed.connect(__save_internal_state)
 
@@ -84,6 +89,10 @@ func update() -> void:
 			step_edit.text_changed.disconnect(__on_step_details_changed)
 		step_edit.text = __step_data.details
 		step_edit.text_changed.connect(__on_step_details_changed)
+		
+	#dependency_options.clear()
+	#for dependency in board_data.get_task(data_uuid).dependencies:
+		#dependency_options.add_item(dependency)
 
 
 # Workaround for godotengine/godot#70451
@@ -225,3 +234,9 @@ func __create_step(text: String) -> void:
 		for step in step_holder.get_step_entries():
 			if step.step_data == data:
 				step.grab_focus.call_deferred()
+
+
+func __populate_dependency_items() -> void:
+	dependency_options.clear()
+	for task in board_data.get_tasks():
+		dependency_options.add_item(board_data.get_task(task).title)

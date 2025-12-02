@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bb8knc6dctfj1"
-path="res://.godot/imported/3.svg-fc30f72e1865c2595813aa024c17af1e.ctex"
+path="res://.godot/imported/3.svg-456dac6515246348acd4893e98f4bdc7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://repositories/godot_kanban_tasks/addons/kanban_tasks/view/documentation/3.svg"
-dest_files=["res://.godot/imported/3.svg-fc30f72e1865c2595813aa024c17af1e.ctex"]
+source_file="res://addons/kanban_tasks/view/documentation/3.svg"
+dest_files=["res://.godot/imported/3.svg-456dac6515246348acd4893e98f4bdc7.ctex"]
 
 [params]
 

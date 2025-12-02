@@ -198,6 +198,11 @@ func update() -> void:
 		title_label.text_changed.disconnect(__set_title)
 	title_label.text = board_data.get_task(data_uuid).title
 	title_label.text_changed.connect(__set_title)
+	
+	var dependencies := board_data.get_task(data_uuid).dependencies
+	if dependencies.size() > 0: details.dependency_options.text = dependencies[0]
+	
+	
 
 	__update_category_menu()
 	__update_category_button()
