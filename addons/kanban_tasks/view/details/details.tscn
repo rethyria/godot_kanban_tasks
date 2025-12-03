@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwi22eyrmeeet"]
+[gd_scene load_steps=7 format=3 uid="uid://bwi22eyrmeeet"]
 
 [ext_resource type="Script" uid="uid://cfuka8bfmcwog" path="res://addons/kanban_tasks/view/details/details.gd" id="1_gh7s6"]
 [ext_resource type="PackedScene" uid="uid://dwjg5vyxx4g48" path="res://addons/kanban_tasks/view/details/step_holder.tscn" id="2_0ptaf"]
-[ext_resource type="Script" uid="uid://de57dc6iw6tle" path="res://addons/kanban_tasks/view/details/expanding_foldable_container.gd" id="2_3ifuf"]
+[ext_resource type="Script" path="res://addons/kanban_tasks/view/details/expanding_foldable_container.gd" id="2_3ifuf"]
+[ext_resource type="Texture2D" uid="uid://bc22jf62qsikb" path="res://addons/kanban_tasks/icon.svg" id="3_71kab"]
 
 [sub_resource type="DPITexture" id="DPITexture_3ifuf"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#ff5d5d\" d=\"M2 1v8.586l1.293-1.293a1 1 0 0 1 1.414 0L7 10.587l2.293-2.293a1 1 0 0 1 1.414 0L13 10.586l1-1V6H9V1H2zm8 0v4h4zm-6 9.414-2 2V15h12v-2.586l-.293.293a1 1 0 0 1-1.414 0L10 10.414l-2.293 2.293a1 1 0 0 1-1.414 0L4 10.414z\"/></svg>
@@ -20,14 +21,14 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[node name="Details" type="AcceptDialog"]
+[node name="Details" type="AcceptDialog" unique_id=514683423]
 oversampling_override = 1.0
 title = "Task Details"
 size = Vector2i(916, 557)
 ok_button_text = "Close"
 script = ExtResource("1_gh7s6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=219812442]
 custom_minimum_size = Vector2(900, 500)
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,104 +40,219 @@ offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Category" type="OptionButton" parent="VBoxContainer"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1332901083]
 layout_mode = 2
 
-[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+[node name="URLEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=1033281807]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "URL"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer" unique_id=992179555]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/HSplitContainer"]
+[node name="VSplitContainer" type="VSplitContainer" parent="VBoxContainer/HSplitContainer" unique_id=989162539]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Description" type="TextEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer"]
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer/HSplitContainer/VSplitContainer" unique_id=1828923587]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Description" type="TextEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/TabContainer" unique_id=1152447776]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Description"
 wrap_mode = 1
+metadata/_tab_index = 0
 
-[node name="StepDetails" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/VSplitContainer"]
+[node name="Flow" type="GraphEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/TabContainer" unique_id=1838522474]
+visible = false
+layout_mode = 2
+scroll_offset = Vector2(-634, -87)
+metadata/_tab_index = 1
+
+[node name="StepDetails" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/VSplitContainer" unique_id=356545062]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/VSplitContainer/StepDetails"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/VSplitContainer/StepDetails" unique_id=347682848]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/VSplitContainer/StepDetails/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/VSplitContainer/StepDetails/HBoxContainer" unique_id=1630087976]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Step Details:"
 
-[node name="CloseStepDetails" type="Button" parent="VBoxContainer/HSplitContainer/VSplitContainer/StepDetails/HBoxContainer"]
+[node name="CloseStepDetails" type="Button" parent="VBoxContainer/HSplitContainer/VSplitContainer/StepDetails/HBoxContainer" unique_id=1758252415]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Close"
 icon = SubResource("DPITexture_3ifuf")
 flat = true
 
-[node name="StepEdit" type="TextEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/StepDetails"]
+[node name="StepEdit" type="TextEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/StepDetails" unique_id=833933856]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 wrap_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HSplitContainer" unique_id=1713990851]
+custom_minimum_size = Vector2(252, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/MarginContainer" unique_id=1935029921]
 layout_mode = 2
 
-[node name="URLEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/VBoxContainer"]
+[node name="Category" type="OptionButton" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer" unique_id=318807284]
+unique_name_in_owner = true
 layout_mode = 2
-placeholder_text = "URL"
 
-[node name="StepsContainer" type="FoldableContainer" parent="VBoxContainer/HSplitContainer/VBoxContainer"]
-custom_minimum_size = Vector2(208, 0)
+[node name="DetailsContainer" type="FoldableContainer" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer" unique_id=384107406]
 layout_mode = 2
-size_flags_vertical = 3
-title = "Steps"
+size_flags_vertical = 0
+title = "Details"
 script = ExtResource("2_3ifuf")
-metadata/_custom_type_script = "uid://de57dc6iw6tle"
 
-[node name="StepList" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/VBoxContainer/StepsContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer" unique_id=92771511]
+clip_contents = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="CreateStepEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/VBoxContainer/StepsContainer/StepList"]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer" unique_id=759502368]
+layout_mode = 2
+columns = 2
+
+[node name="Label5" type="Label" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer/GridContainer" unique_id=2120710092]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "URI"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer/GridContainer" unique_id=765922607]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer/GridContainer/HBoxContainer" unique_id=1711908271]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer/GridContainer/HBoxContainer" unique_id=520513091]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "https://github.com/rethyria/godot_kanban_tasks"
+uri = "https://github.com/rethyria/godot_kanban_tasks"
+text_overrun_behavior = 1
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer/GridContainer/HBoxContainer" unique_id=224935983]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("3_71kab")
+ignore_texture_size = true
+stretch_mode = 4
+flip_h = true
+
+[node name="Label" type="Label" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer/GridContainer" unique_id=1917441603]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Created by"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer/GridContainer" unique_id=1067728398]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Me"
+editable = false
+
+[node name="Label2" type="Label" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer/GridContainer" unique_id=612418600]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Created on"
+
+[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer/GridContainer" unique_id=30490311]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "02 Dec 25 | 23:40"
+editable = false
+expand_to_text_length = true
+
+[node name="Label3" type="Label" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer/GridContainer" unique_id=1525991635]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Modified on"
+
+[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer/GridContainer" unique_id=312248526]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "02 Dec 25 | 23:45"
+editable = false
+expand_to_text_length = true
+
+[node name="Label4" type="Label" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer/GridContainer" unique_id=252375373]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Assigned to"
+
+[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer/GridContainer" unique_id=1326337216]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Me"
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DetailsContainer/VBoxContainer" unique_id=36078979]
+visible = false
+layout_mode = 2
+
+[node name="DependenciesContainer" type="FoldableContainer" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer" unique_id=1495760397]
+layout_mode = 2
+size_flags_vertical = 3
+title = "Dependencies"
+script = ExtResource("2_3ifuf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DependenciesContainer" unique_id=1216236969]
+clip_contents = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="DependencyOptions" type="OptionButton" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DependenciesContainer/VBoxContainer" unique_id=1012090473]
 unique_name_in_owner = true
 layout_mode = 2
-placeholder_text = "Create Step"
+clip_text = true
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/DependenciesContainer/VBoxContainer" unique_id=2059519623]
+layout_mode = 2
+
+[node name="StepsContainer" type="FoldableContainer" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer" unique_id=1451331774]
+custom_minimum_size = Vector2(208, 0)
+layout_mode = 2
+size_flags_vertical = 3
+title = "Subtasks"
+script = ExtResource("2_3ifuf")
+
+[node name="StepList" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/StepsContainer" unique_id=912113128]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="CreateStepEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/StepsContainer/StepList" unique_id=566901039]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Create subtask"
 right_icon = SubResource("DPITexture_3ifuf")
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HSplitContainer/VBoxContainer/StepsContainer/StepList"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/StepsContainer/StepList" unique_id=423360235]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_71kab")
 
-[node name="StepHolder" parent="VBoxContainer/HSplitContainer/VBoxContainer/StepsContainer/StepList/PanelContainer" instance=ExtResource("2_0ptaf")]
+[node name="StepHolder" parent="VBoxContainer/HSplitContainer/MarginContainer/VBoxContainer/StepsContainer/StepList/PanelContainer" unique_id=1452196302 instance=ExtResource("2_0ptaf")]
 unique_name_in_owner = true
 layout_mode = 2
 steps_focus_mode = 2
-
-[node name="DependenciesContainer" type="FoldableContainer" parent="VBoxContainer/HSplitContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-title = "Dependencies"
-script = ExtResource("2_3ifuf")
-metadata/_custom_type_script = "uid://de57dc6iw6tle"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer/VBoxContainer/DependenciesContainer"]
-clip_contents = true
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="DependencyOptions" type="OptionButton" parent="VBoxContainer/HSplitContainer/VBoxContainer/DependenciesContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-clip_text = true
-
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HSplitContainer/VBoxContainer/DependenciesContainer/VBoxContainer"]
-layout_mode = 2
